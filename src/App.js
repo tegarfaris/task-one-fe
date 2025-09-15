@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import ProductTable from "./features/components/ProductTable";
+import Wizard from "./features/components/Wizard";
 
-function App() {
+export default function App() {
+  const [view, setView] = useState("table");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <main>
+        {view === "table" ? (
+          <ProductTable setView={setView} />
+        ) : (
+          <Wizard setView={setView} />
+        )}
+      </main>
     </div>
   );
 }
-
-export default App;
